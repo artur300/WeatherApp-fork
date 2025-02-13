@@ -47,22 +47,6 @@ class CitySearchViewModel @Inject constructor(
         }
     }
 
-    fun getCities(query: String = "") {
-        viewModelScope.launch {
-            try {
-                val response = repository.getCitiesFromAPI(query)
-                if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-                    cityList.postValue(response.body())
-                } else {
-                    cityList.postValue(emptyList())
-                }
-            } catch (e: Exception) {
-                cityList.postValue(emptyList())
-                Log.e("CitySearchViewModel", "Error fetching city list", e)
-            }
-        }
-    }
-
     fun searchCities(query: String) {
         if (query.length < 2) return
 

@@ -15,12 +15,13 @@ import com.example.weatherapp.databinding.FragmentCitySearchBinding
 import com.example.weatherapp.ui.CitySearchViewModel
 import com.example.weatherapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import il.co.syntax.fullarchitectureretrofithiltkotlin.utils.autoCleared
 import java.util.Locale
 
 @AndroidEntryPoint
 class CitySearchFragment : Fragment() {
 
-    private lateinit var binding: FragmentCitySearchBinding
+    private var binding: FragmentCitySearchBinding by autoCleared()
     private val viewModel: CitySearchViewModel by viewModels()
     private lateinit var cityAdapter: CityAutoCompleteAdapter
 
@@ -38,28 +39,32 @@ class CitySearchFragment : Fragment() {
         observeWeatherData()
         observeCityList()
 
+        // עדכון רשימת הערים בזמן אמת תוך כדי הקלדה
         binding.etCityName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.isNullOrEmpty()) {
-                    viewModel.searchCities(s.toString())
+                    viewModel.searchCities(s.toString()) // חיפוש בזמן אמת
                 }
             }
         })
 
+        // הסרת הקריאה ל-getWeatherByCity בבחירה מהרשימה כדי למנוע חיפוש מיותר
         binding.etCityName.setOnItemClickListener { _, _, position, _ ->
             val selectedCity = cityAdapter.getItem(position)
             binding.etCityName.setText(selectedCity)
-            viewModel.getWeatherByCity(selectedCity)
         }
 
+        // חיפוש יתבצע רק בעת לחיצה על כפתור "חפש"
         binding.btnSearch.setOnClickListener {
             val enteredCity = binding.etCityName.text.toString()
             if (enteredCity.isNotEmpty()) {
-                viewModel.getWeatherByCity(enteredCity)
+                viewModel.getWeatherByCity(enteredCity) // קריאה לפי עיר בלבד
             } else {
-                Toast.makeText(requireContext(), getString(R.string.please_enter_city_country), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.enter_city_name), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -108,3 +113,4 @@ class CitySearchFragment : Fragment() {
         binding.progressBar.visibility = View.GONE
     }
 }
+
