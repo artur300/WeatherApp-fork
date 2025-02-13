@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@color/white"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="8dp">
 
         <!-- שדה חיפוש עם השלמה אוטומטית -->
         <AutoCompleteTextView
@@ -21,14 +21,16 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_city_name"
             android:inputType="text"
-            android:completionThreshold="2"/>
+            android:completionThreshold="2"
+            android:layout_marginBottom="8dp"/>
 
         <!-- כפתור חיפוש -->
         <Button
             android:id="@+id/btnSearch"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
+            android:layout_gravity="center"
             android:layout_marginBottom="16dp"/>
 
         <!-- כרטיסיית מזג אוויר -->
@@ -40,10 +42,13 @@
             app:cardElevation="6dp"
             app:cardBackgroundColor="@color/dark_cyan">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
 
                 <!-- שם העיר -->
                 <TextView
@@ -52,10 +57,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/city_n_a"
                     android:textColor="@color/bright_cyan"
-                    android:textSize="22sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:gravity="center"/>
 
                 <!-- שם המדינה -->
                 <TextView
@@ -64,10 +68,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/country_n_a"
                     android:textColor="@color/bright_cyan"
-                    android:textSize="18sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCity" />
+                    android:gravity="center"/>
 
                 <!-- תיאור מזג האוויר -->
                 <TextView
@@ -78,8 +81,15 @@
                     android:textColor="@color/bright_cyan"
                     android:textSize="18sp"
                     android:textStyle="italic"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCountry" />
+                    android:gravity="center"/>
+
+                <!-- קו מפריד -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/bright_cyan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- תמונת מזג אוויר -->
                 <ImageView
@@ -89,8 +99,7 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_sunny"
                     android:contentDescription="@string/weather_icon_desc"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_gravity="center"/>
 
                 <!-- טמפרטורה ראשית -->
                 <TextView
@@ -101,8 +110,15 @@
                     android:textColor="@color/bright_cyan"
                     android:textSize="50sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvWeatherDescription" />
+                    android:layout_gravity="center"/>
+
+                <!-- קו מפריד -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bright_cyan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- מרגיש כמו -->
                 <TextView
@@ -112,52 +128,81 @@
                     android:text="@string/feels_like_n_a"
                     android:textColor="@color/bright_cyan"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvTemperature" />
+                    android:layout_gravity="center"/>
+
+                <!-- קו מפריד -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bright_cyan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- זריחה ושקיעה -->
-                <TextView
-                    android:id="@+id/tvSunrise"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sunrise_n_a"
-                    android:textColor="@color/bright_cyan"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLike" />
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                <TextView
-                    android:id="@+id/tvSunset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sunset_n_a"
-                    android:textColor="@color/bright_cyan"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLike" />
+                    <TextView
+                        android:id="@+id/tvSunrise"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunrise_n_a"
+                        android:textColor="@color/bright_cyan"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:gravity="start"/>
+
+                    <TextView
+                        android:id="@+id/tvSunset"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunset_n_a"
+                        android:textColor="@color/bright_cyan"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:gravity="end"/>
+                </LinearLayout>
+
+                <!-- קו מפריד -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bright_cyan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- לחות ורוח -->
-                <TextView
-                    android:id="@+id/tvHumidity"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/humidity_n_a"
-                    android:textColor="@color/bright_cyan"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSunrise" />
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                <TextView
-                    android:id="@+id/tvWindSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wind_speed_n_a"
-                    android:textColor="@color/bright_cyan"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSunset" />
+                    <TextView
+                        android:id="@+id/tvHumidity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/humidity_n_a"
+                        android:textColor="@color/bright_cyan"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:gravity="start"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tvWindSpeed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wind_speed_n_a"
+                        android:textColor="@color/bright_cyan"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:gravity="end"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <!-- ProgressBar מוצג כברירת מחדל מוסתר -->
@@ -168,7 +213,8 @@
             android:layout_gravity="center"
             android:visibility="gone"
             android:layout_marginTop="16dp"/>
-
     </LinearLayout>
 </ScrollView>
+
+
 
