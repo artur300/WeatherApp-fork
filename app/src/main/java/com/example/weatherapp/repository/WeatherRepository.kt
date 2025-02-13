@@ -1,6 +1,6 @@
 package com.example.weatherapp.repository
 
-import com.example.weatherapp.api.RetrofitInstance
+import retrofit2.Response
 import com.example.weatherapp.api.WeatherAPI
 import com.example.weatherapp.db.WeatherDatabase
 import com.example.weatherapp.models.CityResponse
@@ -12,8 +12,19 @@ class WeatherRepository @Inject constructor(
     private val db : WeatherDatabase
 ) {
     //---------------arthur code------------------
-    suspend fun getCoordinates(city: String, country: String) =
-        api.getCoordinates("$city,$country")
+    suspend fun getCoordinates(city: String, country: String? = null): Response<List<CityResponse>> {
+        val query = if (country.isNullOrEmpty()) city else "$city,$country"
+        return api.getCoordinates(query)
+    }
+    //---------פתוח להרחבות בעתיד אפשר לחפש רק לפי עיר או גם עיר וגם מדינה----
+
+
+    suspend fun getCitiesFromAPI(query: String): Response<List<CityResponse>> {
+        return api.searchCities(query) // וודא שזה מעביר את הפרמטר
+    }
+
+
+
     //--------------------------------------------
 
     suspend fun getWeatherData(lat: Double, lon: Double, unit: String) =

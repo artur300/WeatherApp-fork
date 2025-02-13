@@ -10,7 +10,9 @@ import com.example.weatherapp.repository.WeatherRepository
 import com.example.weatherapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import com.example.weatherapp.models.CityResponse
 import javax.inject.Inject
+import android.util.Log
 
 @HiltViewModel
 class CitySearchViewModel @Inject constructor(
@@ -18,24 +20,63 @@ class CitySearchViewModel @Inject constructor(
     private val app: Application
 ) : AndroidViewModel(app) {
 
-    val weatherData: MutableLiveData<Resource<WeatherResponse>> = MutableLiveData()
+    val weatherData = MutableLiveData<Resource<WeatherResponse>>()
+    val cityList = MutableLiveData<List<CityResponse>>()
 
-    fun getWeatherByCity(city: String, country: String) {
+    fun getWeatherByCity(city: String) {
         weatherData.value = Resource.Loading()
 
         viewModelScope.launch {
-            val response = repository.getCoordinates(city, country)
+            try {
+                val response = repository.getCoordinates(city)
+                if (response.isSuccessful) {
+                    val firstCity = response.body()?.firstOrNull()
 
-            if (response.isSuccessful) {
-                val cityList = response.body()
-                val firstCity = cityList?.firstOrNull()
+                    firstCity?.let {
+                        val weatherResponse = repository.getWeatherData(it.lat, it.lon, "metric")
+                        handleWeatherResponse(weatherResponse)
+                    } ?: weatherData.postValue(Resource.Error(app.getString(R.string.error_city_not_found)))
 
-                firstCity?.let {
-                    val weatherResponse = repository.getWeatherData(it.lat, it.lon, "metric")
-                    handleWeatherResponse(weatherResponse)
-                } ?: weatherData.postValue(Resource.Error(app.getString(R.string.error_city_not_found)))
-            } else {
-                weatherData.postValue(Resource.Error(app.getString(R.string.error_fetch_coordinates)))
+                } else {
+                    weatherData.postValue(Resource.Error(app.getString(R.string.error_fetch_coordinates)))
+                }
+            } catch (e: Exception) {
+                weatherData.postValue(Resource.Error(app.getString(R.string.error_fetch_weather)))
+                Log.e("CitySearchViewModel", "Error fetching weather", e)
+            }
+        }
+    }
+
+    fun getCities(query: String = "") {
+        viewModelScope.launch {
+            try {
+                val response = repository.getCitiesFromAPI(query)
+                if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+                    cityList.postValue(response.body())
+                } else {
+                    cityList.postValue(emptyList())
+                }
+            } catch (e: Exception) {
+                cityList.postValue(emptyList())
+                Log.e("CitySearchViewModel", "Error fetching city list", e)
+            }
+        }
+    }
+
+    fun searchCities(query: String) {
+        if (query.length < 2) return
+
+        viewModelScope.launch {
+            try {
+                val response = repository.getCitiesFromAPI(query)
+                if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+                    cityList.postValue(response.body())
+                } else {
+                    cityList.postValue(emptyList())
+                }
+            } catch (e: Exception) {
+                cityList.postValue(emptyList())
+                Log.e("CitySearchViewModel", "Error searching cities", e)
             }
         }
     }
@@ -50,5 +91,3 @@ class CitySearchViewModel @Inject constructor(
         }
     }
 }
-
-

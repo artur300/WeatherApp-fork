@@ -29,8 +29,18 @@ interface WeatherAPI {
         @Query("limit") limit: Int = 1,
         @Query("appid") apiKey: String = API_KEY
     ): Response<List<CityResponse>>
+
+
+
+
+
+    @GET("geo/1.0/direct")
+    suspend fun searchCities(
+        @Query("q") query: String,
+        @Query("limit") limit: Int = 10,
+        @Query("appid") apiKey: String = API_KEY
+    ): Response<List<CityResponse>>
+
 //---------------------------------
-
-
 
 }
