@@ -21,6 +21,7 @@
     <!-- Default values when data is not available -->
     <string name="city_n_a">Tel Aviv</string>
     <string name="country_n_a">Israel</string>
+    <string name="feels_like_n_a">Feels Like:20°C</string>
     <string name="temperature_n_a">25°C</string>
     <string name="humidity_n_a">Humidity: 60%</string>
     <string name="pressure_n_a">Pressure: 1013 hPa</string>

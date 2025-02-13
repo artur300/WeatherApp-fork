@@ -94,7 +94,6 @@ class CitySearchFragment : Fragment() {
                         tvTemperature.text = getString(R.string.label_temp, weather?.main?.temp ?: "--")
                         tvFeelsLike.text = getString(R.string.label_feels_like, weather?.main?.feels_like ?: "--")
                         tvHumidity.text = getString(R.string.label_humidity, weather?.main?.humidity ?: "--")
-                        tvPressure.text = getString(R.string.label_pressure, weather?.main?.pressure ?: "--")
                         tvWindSpeed.text = getString(R.string.label_wind, weather?.wind?.speed ?: "--")
                         tvSunrise.text = getString(R.string.label_sunrise, convertUnixToTime(weather?.sys?.sunrise, weather?.timezone))
                         tvSunset.text = getString(R.string.label_sunset, convertUnixToTime(weather?.sys?.sunset, weather?.timezone))
