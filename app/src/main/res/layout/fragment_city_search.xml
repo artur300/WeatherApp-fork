@@ -97,6 +97,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:scaleType="fitCenter"
+                    android:src="@drawable/ic_launcher_foreground"
                     android:contentDescription="@string/weather_icon_desc"
                     android:layout_gravity="center"/>
 
@@ -201,6 +202,26 @@
                         android:layout_weight="1"
                         android:gravity="end"/>
                 </LinearLayout>
+
+                <!-- קו מפריד -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/bright_cyan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- תמונת מזג אוויר -->
+                <ImageView
+                    android:id="@+id/ivHeartIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_heart"
+                    android:layout_gravity="center"/>
+
+
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
