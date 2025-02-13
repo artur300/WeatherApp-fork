@@ -55,20 +55,56 @@
             android:text="@string/temperature_n_a"/>
 
         <TextView
+            android:id="@+id/tvFeelsLike"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/label_feels_like"/>
+
+        <TextView
             android:id="@+id/tvHumidity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
             android:text="@string/humidity_n_a"/>
+
+        <TextView
+            android:id="@+id/tvPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/pressure_n_a"/>
 
         <TextView
             android:id="@+id/tvWindSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
             android:text="@string/wind_speed_n_a"/>
+
+        <TextView
+            android:id="@+id/tvSunrise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/sunrise_n_a"/>
+
+        <TextView
+            android:id="@+id/tvSunset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/sunset_n_a"/>
+
+        <TextView
+            android:id="@+id/tvWeatherDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:text="@string/weather_description_n_a"/>
+
+
 
         <!-- ProgressBar מוצג כברירת מחדל מוסתר -->
         <ProgressBar
@@ -81,3 +117,4 @@
 
     </LinearLayout>
 </ScrollView>
+

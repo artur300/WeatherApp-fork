@@ -6,7 +6,14 @@
     <string name="label_city">City: %s</string>
     <string name="label_country">Country: %s</string>
     <string name="label_temp">Temp: %s°C</string>
+    <string name="label_feels_like">Feels Like: %s°C</string>
+    <string name="label_humidity">Humidity: %s%%</string>
+    <string name="label_pressure">Pressure: %s hPa</string>
+    <string name="label_sunrise">Sunrise: %s</string>
+    <string name="label_sunset">Sunset: %s</string>
     <string name="label_wind">Wind: %s m/s</string>
+    <string name="label_weather_description">Description: %s</string>
+
     <string name="enter_city_name">Enter City Name</string>
     <string name="search">Search</string>
     <string name="enter_country_code">Enter country</string>
@@ -16,7 +23,11 @@
     <string name="country_n_a">Country: N/A</string>
     <string name="temperature_n_a">Temperature: N/A</string>
     <string name="humidity_n_a">Humidity: N/A</string>
+    <string name="pressure_n_a">Pressure: N/A</string>
+    <string name="sunrise_n_a">Sunrise: N/A</string>
+    <string name="sunset_n_a">Sunset: N/A</string>
     <string name="wind_speed_n_a">Wind Speed: N/A</string>
+    <string name="weather_description_n_a">Description: N/A</string>
 
     <!-- Loading and Errors -->
     <string name="loading">Loading...</string>

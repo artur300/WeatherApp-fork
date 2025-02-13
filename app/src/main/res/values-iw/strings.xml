@@ -2,27 +2,38 @@
 <resources>
     <string name="app_name">אפליקציית מזג אוויר</string>
 
-    <!-- רמזים וכותרות -->
+    <!-- Hints and Labels -->
     <string name="label_city">עיר: %s</string>
     <string name="label_country">מדינה: %s</string>
     <string name="label_temp">טמפרטורה: %s°C</string>
-    <string name="label_wind">מהירות רוח: %s מ/ש</string>
+    <string name="label_feels_like">מרגיש כמו: %s°C</string>
+    <string name="label_humidity">לחות: %s%%</string>
+    <string name="label_pressure">לחץ: %s hPa</string>
+    <string name="label_sunrise">זריחה: %s</string>
+    <string name="label_sunset">שקיעה: %s</string>
+    <string name="label_wind">רוח: %s מ"ש</string>
+    <string name="label_weather_description">תיאור: %s</string>
+
     <string name="enter_city_name">הזן שם עיר</string>
-    <string name="search">חיפוש</string>
+    <string name="search">חפש</string>
     <string name="enter_country_code">הזן מדינה</string>
 
-    <!-- ערכים ברירת מחדל כאשר הנתונים אינם זמינים -->
-    <string name="city_n_a">עיר: לא זמין</string>
-    <string name="country_n_a">מדינה: לא זמינה</string>
-    <string name="temperature_n_a">טמפרטורה: לא זמינה</string>
-    <string name="humidity_n_a">לחות: לא זמינה</string>
-    <string name="wind_speed_n_a">מהירות רוח: לא זמינה</string>
+    <!-- Default values when data is not available -->
+    <string name="city_n_a">עיר: לא ידוע</string>
+    <string name="country_n_a">מדינה: לא ידוע</string>
+    <string name="temperature_n_a">טמפרטורה: לא ידוע</string>
+    <string name="humidity_n_a">לחות: לא ידוע</string>
+    <string name="pressure_n_a">לחץ: לא ידוע</string>
+    <string name="sunrise_n_a">זריחה: לא ידוע</string>
+    <string name="sunset_n_a">שקיעה: לא ידוע</string>
+    <string name="wind_speed_n_a">רוח: לא ידוע</string>
+    <string name="weather_description_n_a">תיאור: לא ידוע</string>
 
-    <!-- טעינה ושגיאות -->
+    <!-- Loading and Errors -->
     <string name="loading">טוען...</string>
-    <string name="error_fetch_weather">נכשל בשליפת נתוני מזג האוויר</string>
-    <string name="error_city_not_found">לא נמצאה עיר</string>
-    <string name="error_fetch_coordinates">נכשל בשליפת קואורדינטות של העיר</string>
+    <string name="error_fetch_weather">נכשל באחזור נתוני מזג האוויר</string>
+    <string name="error_city_not_found">העיר לא נמצאה</string>
+    <string name="error_fetch_coordinates">נכשל באחזור נתוני המיקום</string>
     <string name="error_no_data">לא נמצאו נתונים</string>
-    <string name="please_enter_city_country">נא להזין עיר ומדינה</string>
+    <string name="please_enter_city_country">אנא הזן עיר ומדינה</string>
 </resources>

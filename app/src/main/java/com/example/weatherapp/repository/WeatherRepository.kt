@@ -18,12 +18,9 @@ class WeatherRepository @Inject constructor(
     }
     //---------פתוח להרחבות בעתיד אפשר לחפש רק לפי עיר או גם עיר וגם מדינה----
 
-
     suspend fun getCitiesFromAPI(query: String): Response<List<CityResponse>> {
-        return api.searchCities(query) // וודא שזה מעביר את הפרמטר
+        return api.searchCities(query)
     }
-
-
 
     //--------------------------------------------
 

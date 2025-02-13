@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.weatherapp.R
 import com.example.weatherapp.adapters.CityAutoCompleteAdapter
 import com.example.weatherapp.databinding.FragmentCitySearchBinding
@@ -16,6 +17,7 @@ import com.example.weatherapp.ui.CitySearchViewModel
 import com.example.weatherapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import il.co.syntax.fullarchitectureretrofithiltkotlin.utils.autoCleared
+import com.example.weatherapp.util.convertUnixToTime
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -90,8 +92,16 @@ class CitySearchFragment : Fragment() {
                         tvCity.text = getString(R.string.label_city, weather?.name ?: getString(R.string.city_n_a))
                         tvCountry.text = getString(R.string.label_country, Locale("", weather?.sys?.country ?: "").displayCountry)
                         tvTemperature.text = getString(R.string.label_temp, weather?.main?.temp ?: "--")
+                        tvFeelsLike.text = getString(R.string.label_feels_like, weather?.main?.feels_like ?: "--")
+                        tvHumidity.text = getString(R.string.label_humidity, weather?.main?.humidity ?: "--")
+                        tvPressure.text = getString(R.string.label_pressure, weather?.main?.pressure ?: "--")
                         tvWindSpeed.text = getString(R.string.label_wind, weather?.wind?.speed ?: "--")
+                        tvSunrise.text = getString(R.string.label_sunrise, convertUnixToTime(weather?.sys?.sunrise, weather?.timezone))
+                        tvSunset.text = getString(R.string.label_sunset, convertUnixToTime(weather?.sys?.sunset, weather?.timezone))
+                        tvWeatherDescription.text = getString(R.string.label_weather_description, weather?.weather?.firstOrNull()?.description ?: "--")
+
                     }
+
                 }
                 is Resource.Error -> {
                     hideLoading()
