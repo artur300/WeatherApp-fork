@@ -99,8 +99,9 @@ class CitySearchFragment : Fragment() {
                         tvSunset.text = getString(R.string.label_sunset, convertUnixToTime(weather?.sys?.sunset, weather?.timezone))
                         tvWeatherDescription.text = getString(R.string.label_weather_description, weather?.weather?.firstOrNull()?.description ?: "--")
 
+                        val iconCode = weather?.weather?.firstOrNull()?.icon
+                        ivWeatherIcon.setImageResource(viewModel.getWeatherIcon(iconCode))
                     }
-
                 }
                 is Resource.Error -> {
                     hideLoading()

@@ -97,9 +97,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_sunny"
                     android:contentDescription="@string/weather_icon_desc"
                     android:layout_gravity="center"/>
+
 
                 <!-- טמפרטורה ראשית -->
                 <TextView
