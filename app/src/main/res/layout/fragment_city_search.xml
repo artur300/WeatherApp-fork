@@ -234,7 +234,20 @@
             android:layout_gravity="center"
             android:visibility="gone"
             android:layout_marginTop="16dp"/>
+
+
+
+        <Button
+            android:id="@+id/btnFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to Favorites"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+
     </LinearLayout>
+
+
 </ScrollView>
 
 
