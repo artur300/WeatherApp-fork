@@ -93,6 +93,11 @@ class CitySearchViewModel @Inject constructor(
     }
 
 
+    fun saveToFavorites(weather: WeatherResponse) {
+        viewModelScope.launch {
+            repository.insertWeatherData(weather)
+        }
+    }
 
 
 

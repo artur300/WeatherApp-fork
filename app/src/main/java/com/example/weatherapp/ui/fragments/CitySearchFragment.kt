@@ -122,5 +122,13 @@ class CitySearchFragment : Fragment() {
     private fun hideLoading() {
         binding.progressBar.visibility = View.GONE
     }
+
+
+
+
+    binding.btnFavorites.setOnClickListener {
+        findNavController().navigate(R.id.action_citySearchFragment_to_favoriteCitiesFragment)
+    }
+
 }
 
