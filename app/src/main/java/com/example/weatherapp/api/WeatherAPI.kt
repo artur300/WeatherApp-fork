@@ -31,9 +31,6 @@ interface WeatherAPI {
     ): Response<List<CityResponse>>
 
 
-
-
-
     @GET("geo/1.0/direct")
     suspend fun searchCities(
         @Query("q") query: String,
